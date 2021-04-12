@@ -1,0 +1,29 @@
+
+.main-body {
+	/* width: 100vw; */
+	height: 100vh;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	background-color: #ececec;
+	
+}
+
+.MuiTableHead-root {
+    border: solid #b5b2b2;
+}
+
+.MuiTableBody-root {
+    border: solid #b5b2b2;
+}
+
+button[class*='btn-'] {
+	height: 2rem;
+	width: 15rem;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	margin-bottom: 2rem;
+	cursor: pointer;
+}
