@@ -29,6 +29,7 @@ function App() {
 	let [open, setOpen] = React.useState(false);
 	let [selectStatus, changeSelectStatus] = useState(false);
 	let [dataSorted, changeDataSortedStatus] = useState(false);
+	let [sortDuration, sortDurationStatus] = useState(0);
 
 	const mapData = (comingData) => {
 		return comingData.map(x => {
@@ -63,6 +64,7 @@ function App() {
 			changeUpToDateDataStatus(true);
 			changeDataSortedStatus(false);
 			setOpen(false);
+			sortDurationStatus(0);
 		}).catch(error => {
 			setOpen(false);
 			console.log('Something bad has happened :( ', error);
@@ -72,7 +74,11 @@ function App() {
 	
 	const sortData = () => {
 		setOpen(true);
+		const t0 = performance.now()
 		const sortedObj = Helper.sort(data.addressData, 'id', algoName);
+		const t1 = performance.now()
+		sortDurationStatus((t1 - t0))
+		console.log(`Sorting with ${algoName}. took: ` + (t1 - t0) + " milliseconds.")
 		updateStateProperty(sortedObj.data, sortedObj.algorithm);
 		changeUpToDateDataStatus(false);
 		changeDataSortedStatus(true);
@@ -85,7 +91,8 @@ function App() {
 
 	const onSelectChanges = (e) => {
 		(algoName !== SELECT_KEY && dataSorted) ? changeUpToDateDataStatus(false) : null;
-		changeAlgo(e.target.value)
+		changeAlgo(e.target.value);
+		sortDurationStatus(0);
 	}
 
 	const isValidData = () => (algoName === SELECT_KEY) || !upToDateDataStatus;
@@ -131,6 +138,10 @@ function App() {
 					<label className="algo-name-lbl elm-center ">
 						Items sorted by: <span className="font-bold"> {data.algoName} </span>
 					</label>
+
+					{sortDuration > 0 ? <label className="algo-name-lbl elm-center ">
+						<div>Sorting with {algoName}. took:  {sortDuration} milliseconds.</div>
+					</label> : null}
 
 					<label className="algo-name-lbl elm-center ">
 						Items: <span className="font-bold"> {data.addressData.length} </span>
