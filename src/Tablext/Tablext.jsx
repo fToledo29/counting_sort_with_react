@@ -17,9 +17,9 @@ function Tablext({data}){
 			aria-label="a dense table">
 				<TableHeader />
 				<TableBody>
-					{data.length > 0 ? data.map(el => {
+					{data.length > 0 ? data.map((el, ind) => {
 						return <Row 
-						key={el.id + el.zip}
+						key={el.id + el.zip + ind}
 						id={el.id} 
 						zip={el.zip} 
 						streetName={el.street_address} />

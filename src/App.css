@@ -23,7 +23,7 @@
 
 .main-body .elm-center {
 	height: 2rem;
-	width: 15rem;
+	width: 17rem;
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
@@ -34,11 +34,15 @@ button[class*='btn-'] {
 	cursor: pointer;
 }
 
-.algo-name {
+.font-bold{
 	font-weight: bold;
 }
 
 .main-body .algo-name-lbl {
 	/* width: 25rem; */
 	margin-bottom: 2.5rem;
+}
+
+.MuiBackdrop-root.backdrop {
+    z-index: 1;
 }

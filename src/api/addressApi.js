@@ -1,5 +1,5 @@
 // import React from 'react';
-const apiURL = 'https://random-data-api.com/api/address/random_address?size=30';
+const apiURL = 'https://random-data-api.com/api/address/random_address?size=100';
 
 
 class API {
